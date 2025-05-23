@@ -1,0 +1,34 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "prettier"
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-case-declarations": "warn",
+    "no-extra-boolean-cast": "warn",
+    "no-useless-escape": "warn",
+    "no-prototype-builtins": "warn",
+    "no-dupe-keys": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "react/prop-types": "off",
+    "no-empty-function": "off",
+    // "@typescript-eslint/ban-ts-comment": "off",
+    // "@typescript-eslint/no-empty-function": "off",
+    "no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": [
+    //   "warn",
+    //   { "varsIgnorePattern": "^SelectProps$" }
+    // ],
+    "no-redeclare": "off"
+  }
+}
