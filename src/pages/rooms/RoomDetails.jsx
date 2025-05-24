@@ -5,7 +5,7 @@ import BookingForm from '../../components/BookingForm';
 import { useEffect, useState } from 'react';
 
 // @ts-ignore
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://bookit-backend-mern.onrender.com/api';
 console.log('RoomDetails baseUrl:', baseUrl);
 
 /**
