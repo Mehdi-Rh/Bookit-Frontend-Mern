@@ -14,7 +14,9 @@ import { useAuthContext } from '@/hooks/auth/useAuthContext';
 function App() {
   const { user, isUserLoading } = useAuthContext();
 
-  if (isUserLoading)
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
+  if (isUserLoading || !BASE_URL)
     return (
       <div className="flex items-center justify-center min-h-screen">
         <span className="text-lg font-semibold">Loading...</span>
