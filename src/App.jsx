@@ -35,13 +35,7 @@ function App() {
               <Route path="/" element={!noUser ? <Home /> : <Navigate to="/login" />} />
               <Route
                 path="/rooms/:id"
-                element={
-                  !noUser ? (
-                    <RoomDetails baseUrl={import.meta.env.VITE_API_URL} />
-                  ) : (
-                    <Navigate to="/login" />
-                  )
-                }
+                element={!noUser ? <RoomDetails /> : <Navigate to="/login" />}
               />
               <Route path="/rooms/add" element={!noUser ? <AddRoom /> : <Navigate to="/login" />} />
               <Route

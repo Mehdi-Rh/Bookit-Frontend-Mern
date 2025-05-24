@@ -9,9 +9,7 @@ const RoomDetails = () => {
   const { id } = params;
 
   const [room, setRoom] = useState(null);
-  const baseUrl =
-    import.meta.env.VITE_API_BASE_URL || 'https://bookit-backend-mern.onrender.com/api';
-
+  const baseUrl = import.meta.env.VITE_API_URL || 'https://bookit-backend-mern.onrender.com/api';
   useEffect(() => {
     const getRoom = async () => {
       const response = await fetch(`${baseUrl}/rooms/${id}`);
