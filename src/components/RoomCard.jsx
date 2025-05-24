@@ -1,4 +1,5 @@
 import useRemoveRoom from '@/hooks/rooms/useRemoveRoom';
+import { Link } from 'react-router';
 
 const RoomCard = ({ room, sourcePage = null }) => {
   const imageSrc = `/images/rooms/${room.image}`;
@@ -31,12 +32,12 @@ const RoomCard = ({ room, sourcePage = null }) => {
       </div>
       <div className="flex gap-2 self-end">
         <div className="flex flex-col sm:flex-row w-full sm:w-auto sm:space-x-2 mt-2 sm:mt-0 self-end">
-          <a
-            href={`/rooms/${room._id}`}
+          <Link
+            to={`/rooms/${room._id}`}
             className="bg-blue-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-blue-700"
           >
             View Room
-          </a>
+          </Link>
         </div>
         {sourcePage === 'my-rooms' && (
           <div className="flex flex-col sm:flex-row w-full sm:w-auto sm:space-x-2 mt-2 sm:mt-0 self-end">
