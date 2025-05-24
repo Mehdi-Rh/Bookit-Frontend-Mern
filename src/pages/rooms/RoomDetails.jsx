@@ -4,27 +4,13 @@ import Heading from '../../components/Heading';
 import BookingForm from '../../components/BookingForm';
 import { useEffect, useState } from 'react';
 
-// @ts-ignore
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-console.log('RoomDetails baseUrl:', baseUrl);
-
-/**
- * @typedef {Object} Room
- * @property {string} name
- * @property {string} image
- * @property {string} description
- * @property {number} sqft
- * @property {string} availability
- * @property {number} price_per_hour
- * @property {string} address
- */
-
 const RoomDetails = () => {
   const params = useParams();
   const { id } = params;
 
-  /** @type {[any, Function]} */
   const [room, setRoom] = useState(null);
+  const baseUrl =
+    import.meta.env.VITE_API_BASE_URL || 'https://bookit-backend-mern.onrender.com/api';
 
   useEffect(() => {
     const getRoom = async () => {
