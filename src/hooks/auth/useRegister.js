@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { apiFetch } from '@/data/api';
 
 export const useRegister = () => {
   const [error, setError] = useState(null);
@@ -10,15 +11,12 @@ export const useRegister = () => {
     setIsLoading(true);
     setError(null);
 
-    const apiUrl = import.meta.env.VITE_API_URL;
-
-    const response = await fetch(`${apiUrl}/user/signup`, {
+    const { json, response } = await apiFetch(`/user/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password }),
     });
 
-    const json = await response.json();
     if (!response.ok) {
       setIsLoading(false);
       setError(json.error);

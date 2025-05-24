@@ -3,18 +3,17 @@ import { Link, useParams } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import BookingForm from '../../components/BookingForm';
 import { useEffect, useState } from 'react';
+import { apiFetch } from '@/data/api';
 
 const RoomDetails = () => {
   const params = useParams();
   const { id } = params;
 
   const [room, setRoom] = useState(null);
-  const baseUrl = import.meta.env.VITE_API_URL || 'https://bookit-backend-mern.onrender.com/api';
   useEffect(() => {
     const getRoom = async () => {
-      const response = await fetch(`${baseUrl}/rooms/${id}`);
-      const data = await response.json();
-      setRoom(data);
+      const { json } = await apiFetch(`/rooms/${id}`);
+      setRoom(json);
     };
     getRoom();
   }, [id]);

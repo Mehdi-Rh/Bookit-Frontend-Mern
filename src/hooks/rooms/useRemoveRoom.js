@@ -1,3 +1,4 @@
+import { apiFetch } from '@/data/api';
 import { useAuthContext } from '../auth/useAuthContext';
 import { useRoomsContext } from './useRoomContext';
 import { useNavigate } from 'react-router';
@@ -13,9 +14,7 @@ const useRemoveRoom = () => {
     //   return;
     // }
 
-    const apiUrl = import.meta.env.VITE_API_URL;
-
-    const response = await fetch(`${apiUrl}/rooms/remove/${id}`, {
+    const { json, response } = await apiFetch(`/rooms/remove/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +22,6 @@ const useRemoveRoom = () => {
       },
       body: JSON.stringify({ id, user_id: user?._id }),
     });
-    const json = await response.json();
 
     if (!response.ok) {
       //   setError(json.error);

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { apiFetch } from '@/data/api';
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -10,14 +11,12 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    const baseUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(`${baseUrl}/user/login`, {
+    const { json, response } = await apiFetch(`/user/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
 
-    const json = await response.json();
     if (!response.ok) {
       setIsLoading(false);
       setError(json.error);

@@ -1,7 +1,6 @@
 import { useAuthContext } from '@/hooks/auth/useAuthContext';
 import useAddBooking from '@/hooks/bookings/useAddBooking';
 import { useState } from 'react';
-import { Navigate, redirect } from 'react-router';
 import { toast } from 'react-toastify';
 
 const BookingForm = ({ room }) => {
@@ -20,8 +19,6 @@ const BookingForm = ({ room }) => {
       [name]: value,
     }));
   };
-
-  console.log({ formData });
 
   const { addBooking } = useAddBooking();
 
@@ -44,8 +41,6 @@ const BookingForm = ({ room }) => {
     const response = await addBooking(boookingData);
 
     toast.success('Form data collected!');
-
-    redirect('/bookings');
   };
 
   return (

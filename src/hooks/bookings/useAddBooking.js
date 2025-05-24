@@ -1,3 +1,4 @@
+import { apiFetch } from '@/data/api';
 import { useAuthContext } from '../auth/useAuthContext';
 import { useBookingsContext } from './useBookingContext';
 import { useNavigate } from 'react-router';
@@ -13,8 +14,7 @@ const useAddBooking = () => {
     //   return;
     // }
 
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(`${apiUrl}/bookings/add`, {
+    const { json, response } = await apiFetch(`/bookings/add`, {
       method: 'POST',
       body: JSON.stringify({ ...booking, user_id: user?._id }),
       headers: {
@@ -22,7 +22,6 @@ const useAddBooking = () => {
         Authorization: `Bearer ${user?.token}`,
       },
     });
-    const json = await response.json();
 
     if (!response.ok) {
       //   setError(json.error);
@@ -34,7 +33,7 @@ const useAddBooking = () => {
       //   setLoad('');
       //   setReps('');
       dispatch({ type: 'CREATE_BOOKING', payload: json });
-      navigate('/');
+      navigate('/bookings');
     }
     return response;
   };

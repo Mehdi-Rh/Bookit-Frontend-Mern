@@ -1,20 +1,18 @@
 import { Link } from 'react-router-dom';
 import CancelBookingButton from './CancelBookingButton';
 import { useEffect, useState } from 'react';
+import { apiFetch } from '@/data/api';
 
 const BookedRoomCard = ({ booking }) => {
   const { room_id } = booking;
 
   const [room, setRoom] = useState(null);
-  const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const getRoom = async () => {
-      const response = await fetch(`${baseUrl}/rooms/${room_id}`);
+      const { json } = await apiFetch(`/rooms/${room_id}`);
 
-      const data = await response.json();
-
-      setRoom(data);
+      setRoom(json);
     };
 
     getRoom();

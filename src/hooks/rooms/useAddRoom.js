@@ -1,3 +1,4 @@
+import { apiFetch } from '@/data/api';
 import { useAuthContext } from '../auth/useAuthContext';
 import { useRoomsContext } from './useRoomContext';
 import { useNavigate } from 'react-router';
@@ -13,8 +14,7 @@ const useAddRoom = () => {
     //   return;
     // }
 
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(`${apiUrl}/rooms/add`, {
+    const { json, response } = await apiFetch(`/rooms/add`, {
       method: 'POST',
       body: JSON.stringify({ ...room, user_id: user?._id }),
       headers: {
@@ -22,7 +22,6 @@ const useAddRoom = () => {
         Authorization: `Bearer ${user?.token}`,
       },
     });
-    const json = await response.json();
 
     if (!response.ok) {
       //   setError(json.error);

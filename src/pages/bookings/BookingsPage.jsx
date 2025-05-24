@@ -4,21 +4,18 @@ import BookedRoomCard from './BookedRoomCard';
 import Heading from '../../components/Heading';
 import { useAuthContext } from '@/hooks/auth/useAuthContext';
 import { useEffect, useState } from 'react';
+import { apiFetch } from '@/data/api';
 
 const BookingsPage = () => {
   const [bookings, setBookings] = useState([]);
 
   const { user } = useAuthContext();
 
-  const baseUrl = import.meta.env.VITE_API_URL;
-
   useEffect(() => {
     const getMyBookings = async () => {
-      const response = await fetch(`${baseUrl}/bookings/my-bookings?userId=${user._id}`);
-      const data = await response.json();
+      const { json } = await apiFetch(`/bookings/my-bookings?userId=${user._id}`);
 
-      console.log({ data });
-      setBookings(data.bookings);
+      setBookings(json.bookings);
     };
 
     getMyBookings();
