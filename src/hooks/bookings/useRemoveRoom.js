@@ -15,7 +15,7 @@ const useRemoveBooking = () => {
 
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const response = await fetch(`${apiUrl}/api/bookings/remove/${id}`, {
+    const response = await fetch(`${apiUrl}/bookings/remove/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ const useAddRoom = () => {
     // }
 
     const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(`${apiUrl}/api/rooms/add`, {
+    const response = await fetch(`${apiUrl}/rooms/add`, {
       method: 'POST',
       body: JSON.stringify({ ...room, user_id: user?._id }),
       headers: {

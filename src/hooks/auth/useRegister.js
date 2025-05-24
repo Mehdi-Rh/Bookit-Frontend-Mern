@@ -12,7 +12,7 @@ export const useRegister = () => {
 
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const response = await fetch(`${apiUrl}/api/user/signup`, {
+    const response = await fetch(`${apiUrl}/user/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password }),

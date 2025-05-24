@@ -15,7 +15,7 @@ const useRemoveRoom = () => {
 
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const response = await fetch(`${apiUrl}/api/rooms/remove/${id}`, {
+    const response = await fetch(`${apiUrl}/rooms/remove/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

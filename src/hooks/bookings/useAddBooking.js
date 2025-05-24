@@ -14,7 +14,7 @@ const useAddBooking = () => {
     // }
 
     const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(`${apiUrl}/api/bookings/add`, {
+    const response = await fetch(`${apiUrl}/bookings/add`, {
       method: 'POST',
       body: JSON.stringify({ ...booking, user_id: user?._id }),
       headers: {
