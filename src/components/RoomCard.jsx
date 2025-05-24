@@ -1,6 +1,6 @@
 import useRemoveRoom from '@/hooks/rooms/useRemoveRoom';
 
-const RoomCard = ({ room, sourcePage }) => {
+const RoomCard = ({ room, sourcePage = null }) => {
   const imageSrc = `/images/rooms/${room.image}`;
 
   const { removeRoom } = useRemoveRoom();

@@ -9,12 +9,11 @@ import Heading from '../../components/Heading';
 import BookingForm from '../../components/BookingForm';
 import { useEffect, useState } from 'react';
 
-const RoomDetails = () => {
+const RoomDetails = ({ baseUrl }) => {
   const params = useParams();
   const { id } = params;
 
   const [room, setRoom] = useState(null);
-  const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const getRoom = async () => {
